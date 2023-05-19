@@ -1,0 +1,35 @@
+{
+  "name": "@mono/utils",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start":"node ./a.js",
+    "build": "node --experimental-specifier-resolution=node --loader ts-node/esm ./build.ts",
+    "test": "echo 1"
+  },
+  "exports": {
+    "./rxjs": {
+      "import": "./dist/rxjs/index.js",
+      "types": "./dist/rxjs/index.d.ts"
+    },
+    "./polyfill": {
+      "import": "./dist/polyfill/index.js",
+      "types": "./dist/polyfill/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "sideEffects": [
+    "./dist/polyfill/index.js"
+  ],
+  "dependencies": {
+    "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
+  }
+}

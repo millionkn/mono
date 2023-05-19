@@ -1,0 +1,6 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  rxjs:
+    specifier: link:..\..\store\node_modules\rxjs
+    version: link:../../store/node_modules/rxjs

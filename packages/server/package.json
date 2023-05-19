@@ -1,0 +1,26 @@
+{
+  "name": "@mono/server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "scripts": {
+    "build": "tsc --noEmit && ts-node -T -p ./tsconfig.build.json ./build.ts",
+    "test": "echo 1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mono/utils": "workspace:^",
+    "dayjs": "link:..\\..\\store\\node_modules\\dayjs",
+    "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
+  }
+}

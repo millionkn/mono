@@ -1,0 +1,25 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+    "module": "ES2020",
+    "target": "ES2020",
+    "moduleResolution": "node16",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+    "paths": {
+      "@src/*": [
+        "./src/*",
+      ]
+    },
+    "types": [
+      "node",
+    ],
+  },
+  "include": [
+    "./src/*.ts",
+    "./src/*.tsx",
+  ],
+}
