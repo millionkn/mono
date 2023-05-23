@@ -5,8 +5,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start":"node ./a.js",
-    "build": "node --experimental-specifier-resolution=node --loader ts-node/esm ./build.ts",
+    "build": "tsc --noEmit && pnpm run --dir ../../ esm-run ./scripts/rollup.ts utils",
     "test": "echo 1"
   },
   "exports": {

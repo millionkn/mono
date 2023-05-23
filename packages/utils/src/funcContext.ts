@@ -3,7 +3,6 @@ import { MultipleMap } from "./multipleMap"
 export class FuncContext {
   private cache1 = new MultipleMap<any>()
   withCache = <R>(deps: any[], getResult: (cacheIndex: number) => R): R => {
-    import(  './cwdPath').then((e) => e)
     const result = this.cache1.get(deps)
     if (!!result) { return result.value }
     return this.cache1.set(deps, getResult(this.cache1.size)).value

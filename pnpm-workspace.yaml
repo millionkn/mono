@@ -1,3 +1,4 @@
 packages:
   - "store"
   - "packages/*"
+  - "scripts"

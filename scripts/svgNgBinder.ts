@@ -4,6 +4,7 @@ import { resolve } from "path/posix"
 import convert from "xml-js"
 import { TmplAstNode, parseTemplate } from "@angular/compiler"
 import * as entities from 'entities'
+import { argv } from "process"
 
 const __TmplAstNodeVisit: TmplAstNode['visit'] = () => { throw 'todo' }
 type Visitor_3<T> = typeof __TmplAstNodeVisit<T> extends ((v: infer P) => any) ? P : never
@@ -25,9 +26,15 @@ function createVisitor3<T>(defalutValue: (node: TmplAstNode) => T, opt: { [key i
   }
 }
 
-await glob('./input/**/*.html', { posix: true }).then(async (targetPathArr) => {
+const inputPathArg = argv[2]
+const outputPathArg = argv[3]
+if (!inputPathArg || !outputPathArg) {
+  throw new Error('路径错误')
+}
+
+await glob(resolve(inputPathArg, '**/*.html'), { posix: true }).then(async (targetPathArr) => {
   for (const targetPath of targetPathArr) {
-    const outputPath = resolve('output', targetPath.replace(/\.html$/, '.svg'))
+    const outputPath = resolve(outputPathArg, targetPath.replace(/\.html$/, '.svg'))
     console.log(`转换${targetPath}`)
     const ast = await readFile(targetPath)
       .then((buffer) => parseTemplate(buffer.toString(), targetPath))
@@ -114,9 +121,9 @@ await glob('./input/**/*.html', { posix: true }).then(async (targetPathArr) => {
   }
 })
 
-await glob('./input/**/*.svg', { posix: true }).then(async (targetPathArr) => {
+await glob(resolve(inputPathArg, '**/*.svg'), { posix: true }).then(async (targetPathArr) => {
   for (const targetPath of targetPathArr) {
-    const outputPath = resolve('output', targetPath.replace(/\.svg$/, '.html'))
+    const outputPath = resolve(outputPathArg, targetPath.replace(/\.svg$/, '.html'))
     console.log(`转换${targetPath}`)
     const svgTemplate = await readFile(targetPath).then((buffer) => buffer.toString())
     const boundTextArr: [string, string][] = []

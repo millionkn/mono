@@ -10,11 +10,6 @@
     },
   },
   "include": [
-    "src/*.ts",
+    "src/**/*.ts",
   ],
-  "references": [
-    {
-      "path": "./tsconfig.build.json",
-    }
-  ]
 }

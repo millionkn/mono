@@ -7,17 +7,19 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "tsc --noEmit && ts-node -T -p ./tsconfig.build.json ./build.ts",
+    "build": "tsc --noEmit && pnpm run --dir ../../ esm-run ./scripts/rollup.ts server",
     "test": "echo 1"
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts"
+      "import": "./dist/define.js",
+      "types": "./dist/define.d.ts"
     }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "sideEffects": false,
   "dependencies": {
     "@mono/utils": "workspace:^",
     "dayjs": "link:..\\..\\store\\node_modules\\dayjs",

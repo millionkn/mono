@@ -5,18 +5,25 @@
   "type": "module",
   "scripts": {
     "graph": "nx graph",
-    "start": "pnpm --dir ./packagesDev/svgNgBinder start",
+    "esm-run": "ts-node-esm -T --experimental-specifier-resolution node --project ./tsconfig.json",
     "test": "echo 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@angular/compiler": "^16.0.1",
+    "@angular/core": "^16.0.1",
+    "entities": "^4.5.0",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.2.2",
+    "xml-js": "^1.6.11"
+  },
   "devDependencies": {
-    "@rollup/plugin-multi-entry": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.1.1",
     "@types/resolve": "^1.20.2",
-    "cross-env": "^7.0.3",
     "enhanced-resolve": "^5.14.0",
     "es-module-lexer": "^1.2.1",
     "glob": "^10.2.2",

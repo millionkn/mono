@@ -17,6 +17,7 @@
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
   },
   "devDependencies": {
+    "@mono/server": "workspace:^",
     "@types/react": "link:..\\..\\store\\node_modules\\@types\\react",
     "@types/react-dom": "link:..\\..\\store\\node_modules\\@types\\react-dom",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
