@@ -5,8 +5,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "tsc --noEmit && pnpm run --dir ../../ esm-run ./scripts/rollup.ts utils",
-    "test": "echo 1"
+    "build-dist": "tsc && pnpm run --dir ../../ esm-run ./scripts/rollup.ts utils"
   },
   "exports": {
     "./rxjs": {

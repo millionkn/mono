@@ -1,0 +1,41 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build-dist"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": [
+        "^dev"
+      ]
+    },
+    "build-project": {
+      "dependsOn": [
+        "^build-dist"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "build-dist": {
+      "dependsOn": [
+        "^build-dist"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "preview": {
+      "dependsOn": [
+        "^preview"
+      ]
+    }
+  },
+  "defaultBase": "master"
+}

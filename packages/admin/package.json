@@ -4,14 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "dev": "vite",
+    "build-project": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mono/antd-hooks": "workspace:^",
+    "@mono/control-hooks": "workspace:^",
     "@mono/utils": "workspace:^",
     "antd": "link:..\\..\\store\\node_modules\\antd",
+    "axios": "^1.4.0",
     "react": "link:..\\..\\store\\node_modules\\react",
     "react-dom": "link:..\\..\\store\\node_modules\\react-dom",
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs"

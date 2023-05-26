@@ -3,12 +3,12 @@ export { }
 declare global {
   interface Number {
     times<T>(fun: (i: number) => T): T[];
-    asNumber: (pipe?: (value: number) => number | string | null) => number | null
+    asNumber: () => number | null
     pipe: <T>(fun: (i: number) => T) => T
   }
 
   interface String {
-    asNumber: (pipe?: (value: number) => number | string | null) => number | null
+    asNumber: () => number | null
     pipe: <T>(fun: (str: string) => T) => T
   }
 
@@ -68,10 +68,9 @@ Number.prototype.times = function (fun) {
     .map((_, i) => fun(i))
 }
 
-Number.prototype.asNumber = function (pipe) {
+Number.prototype.asNumber = function () {
   if (Number.isNaN(this) || Infinity === this || -Infinity === this) { return null }
-  if (!pipe) { return Number(this) }
-  return pipe(Number(this))?.asNumber() ?? null
+  return Number(this)
 }
 
 Number.prototype.pipe = function (pipe) {
@@ -182,8 +181,8 @@ Math.avg = function (...arr) {
   return arr.reduce((pre, cur) => pre + cur / arr.length, 0)
 }
 
-String.prototype.asNumber = function (pipe) {
-  return Number(this || NaN).asNumber(pipe)
+String.prototype.asNumber = function () {
+  return Number(this || NaN).asNumber()
 }
 String.prototype.pipe = function (pipe) {
   return pipe(this as any)

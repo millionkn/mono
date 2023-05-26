@@ -38,12 +38,13 @@ try {
     external: (_, importer) => !!importer,
     input: Object.fromEntries(inputs.map((path) => [relative(`${projectDir}/src`, path.split('.').slice(0, -1).join('.')), `./${path}`])),
     plugins: [
-      nodeResolve({
-        rootDir: projectDir
-      }),
       typescript({
         clean: true,
         tsconfig: `${projectDir}/tsconfig.json`,
+        check: false,
+      }),
+      nodeResolve({
+        rootDir: projectDir
       }),
       {
         name: 'extName',

@@ -1,0 +1,14 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  react:
+    specifier: link:..\..\store\node_modules\react
+    version: link:../../store/node_modules/react
+
+devDependencies:
+  '@types/react':
+    specifier: link:..\..\store\node_modules\@types\react
+    version: link:../../store/node_modules/@types/react
+  typescript:
+    specifier: link:..\..\node_modules\typescript
+    version: link:../../node_modules/typescript

@@ -1,0 +1,30 @@
+{
+  "name": "@mono/antd-hooks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build-dist": "tsc && pnpm run --dir ../../ esm-run ./scripts/rollup.ts antd-hooks"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "sideEffects": false,
+  "dependencies": {
+    "@mono/control-hooks": "workspace:^",
+    "antd": "link:..\\..\\store\\node_modules\\antd",
+    "react": "link:..\\..\\store\\node_modules\\react",
+    "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
+  },
+  "devDependencies": {
+    "@types/react": "link:..\\..\\store\\node_modules\\@types\\react",
+    "typescript": "link:..\\..\\node_modules\\typescript"
+  }
+}

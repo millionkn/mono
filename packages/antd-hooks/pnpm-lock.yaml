@@ -1,0 +1,23 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@mono/control-hooks':
+    specifier: workspace:^
+    version: link:../control-hooks
+  antd:
+    specifier: link:..\..\store\node_modules\antd
+    version: link:../../store/node_modules/antd
+  react:
+    specifier: link:..\..\store\node_modules\react
+    version: link:../../store/node_modules/react
+  rxjs:
+    specifier: link:..\..\store\node_modules\rxjs
+    version: link:../../store/node_modules/rxjs
+
+devDependencies:
+  '@types/react':
+    specifier: link:..\..\store\node_modules\@types\react
+    version: link:../../store/node_modules/@types/react
+  typescript:
+    specifier: link:..\..\node_modules\typescript
+    version: link:../../node_modules/typescript

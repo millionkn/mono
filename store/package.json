@@ -5,7 +5,6 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "test": "echo 1"
   },
   "keywords": [],
   "author": "",

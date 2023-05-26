@@ -6,17 +6,9 @@
       "DOM.Iterable",
       "ESNext"
     ],
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }
