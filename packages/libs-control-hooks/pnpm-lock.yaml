@@ -1,18 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
-  '@mono/control-hooks':
-    specifier: workspace:^
-    version: link:../control-hooks
-  antd:
-    specifier: link:..\..\store\node_modules\antd
-    version: link:../../store/node_modules/antd
   react:
     specifier: link:..\..\store\node_modules\react
     version: link:../../store/node_modules/react
-  rxjs:
-    specifier: link:..\..\store\node_modules\rxjs
-    version: link:../../store/node_modules/rxjs
 
 devDependencies:
   '@types/react':

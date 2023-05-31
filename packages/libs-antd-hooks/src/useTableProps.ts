@@ -1,7 +1,7 @@
 import { TableProps } from "antd";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Observable } from "rxjs";
-import { useStateBy } from "@mono/control-hooks";
+import { useStateBy } from "@mono/libs-control-hooks";
 
 export const ControlTableContext = createContext({
   firstPageIndex: 1,

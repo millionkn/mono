@@ -1,17 +1,12 @@
 {
-  "name": "@mono/admin",
+  "name": "@mono/project-template-admin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build-project": "tsc && vite build",
-    "preview": "vite preview"
-  },
   "dependencies": {
-    "@mono/antd-hooks": "workspace:^",
-    "@mono/control-hooks": "workspace:^",
-    "@mono/utils": "workspace:^",
+    "@mono/libs-antd-hooks": "workspace:^",
+    "@mono/libs-control-hooks": "workspace:^",
+    "@mono/libs-utils": "workspace:^",
     "antd": "link:..\\..\\store\\node_modules\\antd",
     "axios": "^1.4.0",
     "react": "link:..\\..\\store\\node_modules\\react",
@@ -19,7 +14,7 @@
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
   },
   "devDependencies": {
-    "@mono/server": "workspace:^",
+    "@mono/project-template-server": "workspace:^",
     "@types/react": "link:..\\..\\store\\node_modules\\@types\\react",
     "@types/react-dom": "link:..\\..\\store\\node_modules\\@types\\react-dom",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

@@ -1,9 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
-  '@mono/utils':
+  '@mono/libs-utils':
     specifier: workspace:^
-    version: link:../utils
+    version: link:../libs-utils
   dayjs:
     specifier: link:..\..\store\node_modules\dayjs
     version: link:../../store/node_modules/dayjs

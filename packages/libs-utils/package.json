@@ -1,12 +1,9 @@
 {
-  "name": "@mono/utils",
+  "name": "@mono/libs-utils",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "scripts": {
-    "build-dist": "tsc && pnpm run --dir ../../ esm-run ./scripts/rollup.ts utils"
-  },
   "exports": {
     "./rxjs": {
       "import": "./dist/rxjs/index.js",

@@ -1,41 +1,56 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "master",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
-          "build-dist"
+          "tsc-check",
+          "build-dist",
+          "build-prod"
         ]
       }
     }
   },
   "targetDefaults": {
-    "dev": {
-      "dependsOn": [
-        "^dev"
-      ]
-    },
-    "build-project": {
+    "tsc-check": {
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "{projectRoot}/tsconfig.json"
+      ],
       "dependsOn": [
         "^build-dist"
-      ],
-      "outputs": [
-        "{projectRoot}/dist"
       ]
     },
     "build-dist": {
+      "inputs": [
+        "{projectRoot}/src/**/*"
+      ],
       "dependsOn": [
+        "tsc-check",
         "^build-dist"
       ],
       "outputs": [
         "{projectRoot}/dist"
       ]
     },
-    "preview": {
+    "build-prod": {
+      "inputs": [
+        "{projectRoot}/src/**/*"
+      ],
       "dependsOn": [
-        "^preview"
+        "tsc-check",
+        "^build-dist"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "^build-dist"
       ]
     }
-  },
-  "defaultBase": "master"
+  }
 }

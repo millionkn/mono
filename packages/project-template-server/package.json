@@ -1,15 +1,11 @@
 {
-  "name": "@mono/server",
+  "name": "@mono/project-template-server",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "scripts": {
-    "build-dist": "tsc && pnpm run --dir ../../ esm-run ./scripts/rollup.ts server",
-    "build-project":"pnpm run build-dist"
-  },
   "exports": {
     ".": {
       "import": "./dist/define.js",
@@ -21,7 +17,7 @@
   "license": "ISC",
   "sideEffects": false,
   "dependencies": {
-    "@mono/utils": "workspace:^",
+    "@mono/libs-utils": "workspace:^",
     "dayjs": "link:..\\..\\store\\node_modules\\dayjs",
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
   }

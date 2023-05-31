@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "tsc-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "./packages/project-template-admin"
+      }
+    },
+    "dev": {
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "project-template-admin:build-prod"
+      }
+    },
+    "build-prod": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist"
+      }
+    }
+  }
+}

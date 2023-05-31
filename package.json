@@ -4,8 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "graph": "nx graph",
-    "esm-run": "ts-node-esm -T --experimental-specifier-resolution node --project ./tsconfig.json"
+    "dev":"nx dev",
+    "build":"nx build-prod",
+    "esm-script": "ts-node-esm -T --experimental-specifier-resolution node --project ./tsconfig.json"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
+    "@nx/vite": "^16.2.2",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.1.1",
