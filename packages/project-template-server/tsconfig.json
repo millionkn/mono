@@ -8,6 +8,9 @@
         "./src/*",
       ]
     },
+    "types": [
+      "node",
+    ]
   },
   "include": [
     "src/**/*.ts",

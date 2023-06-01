@@ -64,6 +64,9 @@ devDependencies:
   rollup-plugin-typescript2:
     specifier: ^0.34.1
     version: 0.34.1(rollup@3.21.5)(typescript@5.0.4)
+  tree-kill:
+    specifier: ^1.2.2
+    version: 1.2.2
   ts-node:
     specifier: ^10.9.1
     version: 10.9.1(@types/node@20.1.1)(typescript@5.0.4)
@@ -4106,6 +4109,11 @@ packages:
     hasBin: true
     dependencies:
       nopt: 1.0.10
+    dev: true
+
+  /tree-kill@1.2.2:
+    resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
+    hasBin: true
     dev: true
 
   /ts-node@10.9.1(@types/node@20.1.1)(typescript@5.0.4):

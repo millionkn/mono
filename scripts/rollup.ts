@@ -8,19 +8,10 @@ import { promisify } from 'util';
 import { init as lexerInit, parse as lexerParse } from 'es-module-lexer';
 import MagicString from 'magic-string';
 import { argv } from 'process';
-import { resolveAsCwd } from './tools';
-import { stat } from 'fs/promises';
+import { resolveProjectDir } from './tools';
 import fse from 'fs-extra';
 
-const projectName = argv[2]
-if (!projectName) {
-  throw new Error(`未找到工程:packages/${projectName}`)
-}
-const projectDir = resolveAsCwd(`../packages/${projectName}`)
-const projectStat = await stat(projectDir).catch((e) => null)
-if (!projectStat?.isDirectory()) {
-  throw new Error(`未找到工程:packages/${projectName}`)
-}
+const projectDir = await resolveProjectDir(argv[2])
 
 await lexerInit
 

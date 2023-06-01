@@ -8,9 +8,18 @@ dependencies:
   '@mono/libs-utils':
     specifier: workspace:^
     version: link:../libs-utils
+  '@trpc/server':
+    specifier: link:..\..\store\node_modules\@trpc\server
+    version: link:../../store/node_modules/@trpc/server
   dayjs:
     specifier: link:..\..\store\node_modules\dayjs
     version: link:../../store/node_modules/dayjs
+  fastify:
+    specifier: link:..\..\store\node_modules\fastify
+    version: link:../../store/node_modules/fastify
   rxjs:
     specifier: link:..\..\store\node_modules\rxjs
     version: link:../../store/node_modules/rxjs
+  zod:
+    specifier: link:..\..\store\node_modules\zod
+    version: link:../../store/node_modules/zod

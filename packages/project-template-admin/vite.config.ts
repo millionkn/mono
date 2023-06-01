@@ -13,11 +13,6 @@ export default defineConfig({
   server: {
     port: 4000,
     host: true,
-    fs: {
-      allow: [
-        searchForWorkspaceRoot(process.cwd()),
-      ],
-    },
     proxy: {
       '/admin/api': {
         target: 'http://localhost:3000',

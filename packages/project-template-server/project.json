@@ -19,6 +19,40 @@
       "options": {
         "command": "pnpm run esm-script ./scripts/rollup.ts server"
       }
+    },
+    "run-dist": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "build-dist",
+        "^build-dist"
+      ],
+      "options": {
+        "command": "node ./dist/index.js",
+        "cwd": "./packages/project-template-server"
+      }
+    },
+    "run-debug": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "build-dist",
+        "^build-dist"
+      ],
+      "options": {
+        "command": "node --inspect ./dist/index.js",
+        "cwd": "./packages/project-template-server"
+      }
+    },
+    "debug": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run esm-script ./scripts/watch.ts --emit project-template-server run-debug"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run esm-script ./scripts/watch.ts --emit project-template-server run-dist"
+      }
     }
   }
 }

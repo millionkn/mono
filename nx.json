@@ -47,7 +47,12 @@
         "{projectRoot}/dist"
       ]
     },
-    "dev": {
+    "debug": {
+      "dependsOn": [
+        "^build-dist"
+      ]
+    },
+    "start": {
       "dependsOn": [
         "^build-dist"
       ]

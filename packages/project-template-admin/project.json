@@ -8,10 +8,17 @@
         "cwd": "./packages/project-template-admin"
       }
     },
-    "dev": {
-      "executor": "@nx/vite:dev-server",
+    "dev-server": {
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "project-template-admin:build-prod"
+        "command": "vite",
+        "cwd": "./packages/project-template-admin"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm run esm-script ./scripts/watch.ts --ignore project-template-admin dev-server"
       }
     },
     "build-prod": {
