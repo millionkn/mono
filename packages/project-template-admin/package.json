@@ -7,6 +7,7 @@
     "@mono/libs-antd-hooks": "workspace:^",
     "@mono/libs-control-hooks": "workspace:^",
     "@mono/libs-utils": "workspace:^",
+    "@trpc/client": "link:..\\..\\store\\node_modules\\@trpc\\client",
     "antd": "link:..\\..\\store\\node_modules\\antd",
     "axios": "^1.4.0",
     "react": "link:..\\..\\store\\node_modules\\react",

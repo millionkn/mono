@@ -14,10 +14,10 @@ export default defineConfig({
     port: 4000,
     host: true,
     proxy: {
-      '/admin/api': {
+      '/template-admin/api': {
         target: 'http://localhost:3000',
         ws: true,
-        rewrite: (path) => path.replace(/^\/adimn\/api/, '')
+        rewrite: (path) => path.replace(/^\/template-admin\/api/, '')
       }
     }
   },

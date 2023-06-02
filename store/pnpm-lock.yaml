@@ -11,6 +11,9 @@ dependencies:
   '@trpc/server':
     specifier: ^10.28.1
     version: 10.28.1
+  '@types/node':
+    specifier: ^18.16.16
+    version: 18.16.16
   '@types/react':
     specifier: ^18.0.28
     version: 18.2.6
@@ -230,6 +233,10 @@ packages:
 
   /@trpc/server@10.28.1:
     resolution: {integrity: sha512-imKwru3wGNuZ58Z2BnXwJv7zWAjqMJ7m8uMfah0zL4wUoB3oq2ozp6dfseDEb7SCDqvJqI4BS07HJstJ+idD4Q==}
+    dev: false
+
+  /@types/node@18.16.16:
+    resolution: {integrity: sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==}
     dev: false
 
   /@types/prop-types@15.7.5:

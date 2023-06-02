@@ -11,13 +11,13 @@
     "build-dist": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./scripts/rollup.ts project-template-server"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollup.ts project-template-server"
       }
     },
     "build-prod": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./scripts/rollup.ts server"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollup.ts server"
       }
     },
     "run-dist": {
@@ -45,13 +45,13 @@
     "debug": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./scripts/watch.ts --emit project-template-server run-debug"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/watch.ts --emit project-template-server run-debug"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./scripts/watch.ts --emit project-template-server run-dist"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/watch.ts --emit project-template-server run-dist"
       }
     }
   }

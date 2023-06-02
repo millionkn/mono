@@ -8,8 +8,7 @@
   "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/define.js",
-      "types": "./dist/define.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "keywords": [],
@@ -21,7 +20,11 @@
     "@trpc/server": "link:..\\..\\store\\node_modules\\@trpc\\server",
     "dayjs": "link:..\\..\\store\\node_modules\\dayjs",
     "fastify": "link:..\\..\\store\\node_modules\\fastify",
+    "pino-pretty": "^10.0.0",
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs",
     "zod": "link:..\\..\\store\\node_modules\\zod"
+  },
+  "devDependencies": {
+    "@types/node": "link:..\\..\\store\\node_modules\\@types\\node"
   }
 }

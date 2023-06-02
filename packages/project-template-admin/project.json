@@ -18,7 +18,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./scripts/watch.ts --ignore project-template-admin dev-server"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/watch.ts --ignore project-template-admin dev-server"
       }
     },
     "build-prod": {

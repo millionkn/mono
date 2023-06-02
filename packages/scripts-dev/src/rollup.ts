@@ -2,22 +2,16 @@ import { rollup } from 'rollup'
 import { glob } from "glob"
 import typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { dirname, relative } from "path/posix";
-import enhancedResolve from 'enhanced-resolve';
-import { promisify } from 'util';
+import { dirname, relative, resolve } from 'path';
 import { init as lexerInit, parse as lexerParse } from 'es-module-lexer';
 import MagicString from 'magic-string';
 import { argv } from 'process';
-import { resolveProjectDir } from './tools';
+import { createTsImportResolver, resolveProjectDir } from './tools';
 import fse from 'fs-extra';
 
-const projectDir = await resolveProjectDir(argv[2])
-
+const projectDir = resolveProjectDir(argv[2])
 await lexerInit
-
-const resolveFile = promisify(enhancedResolve.create({
-  extensions: [".ts", ".js"]
-}));
+const tsModuleResolver = createTsImportResolver(resolve(projectDir, 'tsconfig.json'))
 
 try {
   const inputs = await glob(`${projectDir}/src/**/*.ts`, {
@@ -47,15 +41,14 @@ try {
             const start = importSpecifier.d > -1 ? importSpecifier.s + 1 : importSpecifier.s
             const end = importSpecifier.d > -1 ? importSpecifier.e + -1 : importSpecifier.e
             const target = code.slice(start, end)
-            if (!target.startsWith('.')) { continue }
-            const targetExtNonable = await this.resolve(target, id).then((e) => e?.id)
-            if (!targetExtNonable) {
-              this.error(`can't resolve '${target}' in '${id}'`, start)
-            }
-            const targetWithExt = await resolveFile(dirname(id), target)
-            if (!targetWithExt) { continue }
-            if (targetWithExt === targetExtNonable) { continue }
-            magicString.update(start, end, target.concat('.js'))
+            const resolvedModule = tsModuleResolver(id, target)
+            if (!resolvedModule) { continue }
+            if (resolvedModule.isExternalLibraryImport) { continue }
+            const importTarget = relative(dirname(id), resolvedModule.resolvedFileName)
+              .replaceAll('\\', '/')
+              .replace(/\.ts$/, `.js`)
+              .replace(/\.tsx$/, `.jsx`)
+            magicString.update(start, end, importTarget.startsWith('.') ? importTarget : `./${importTarget}`)
           }
           return {
             code: magicString.toString(),
@@ -76,5 +69,5 @@ try {
 } catch (e) {
   //@ts-ignore
   console.log(e.message)
+  throw e
 }
-
