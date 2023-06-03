@@ -17,7 +17,7 @@
     "build-prod": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollup.ts server"
+        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollupProd.ts project-template-server"
       }
     },
     "run-dist": {

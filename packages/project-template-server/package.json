@@ -16,12 +16,14 @@
   "license": "ISC",
   "sideEffects": false,
   "dependencies": {
+    "@mono/libs-type-query": "workspace:^",
     "@mono/libs-utils": "workspace:^",
     "@trpc/server": "link:..\\..\\store\\node_modules\\@trpc\\server",
     "dayjs": "link:..\\..\\store\\node_modules\\dayjs",
     "fastify": "link:..\\..\\store\\node_modules\\fastify",
     "pino-pretty": "^10.0.0",
     "rxjs": "link:..\\..\\store\\node_modules\\rxjs",
+    "typeorm": "link:..\\..\\store\\node_modules\\typeorm",
     "zod": "link:..\\..\\store\\node_modules\\zod"
   },
   "devDependencies": {

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@mono/libs-type-query':
+    specifier: workspace:^
+    version: link:../libs-type-query
   '@mono/libs-utils':
     specifier: workspace:^
     version: link:../libs-utils
@@ -23,6 +26,9 @@ dependencies:
   rxjs:
     specifier: link:..\..\store\node_modules\rxjs
     version: link:../../store/node_modules/rxjs
+  typeorm:
+    specifier: link:..\..\store\node_modules\typeorm
+    version: link:../../store/node_modules/typeorm
   zod:
     specifier: link:..\..\store\node_modules\zod
     version: link:../../store/node_modules/zod

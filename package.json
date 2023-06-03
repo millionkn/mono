@@ -4,9 +4,11 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "start": "nx start",
     "debug": "nx debug",
     "build": "nx build-prod",
+    "dev":"pnpm run esm-script ./packages/scripts-dev/src/rollupProd.ts",
     "esm-script": "ts-node-esm -T --experimental-specifier-resolution node --project ./packages/scripts-dev/tsconfig.json"
   },
   "keywords": [],

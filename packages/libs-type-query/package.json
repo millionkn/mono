@@ -1,0 +1,21 @@
+{
+  "name": "@mono/libs-type-query",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "sideEffects": false,
+  "dependencies": {
+    "@mono/libs-utils": "workspace:^",
+    "typeorm": "link:..\\..\\store\\node_modules\\typeorm"
+  }
+}

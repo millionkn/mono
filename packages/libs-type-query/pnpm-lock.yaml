@@ -1,0 +1,13 @@
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@mono/libs-utils':
+    specifier: workspace:^
+    version: link:../libs-utils
+  typeorm:
+    specifier: link:..\..\store\node_modules\typeorm
+    version: link:../../store/node_modules/typeorm
