@@ -3,8 +3,8 @@
     "module": "ESNext",
     "target": "ESNext",
     "rootDir": "src",
+    "outDir": "dist",
     "moduleResolution": "bundler",
-    "composite": true,
     "resolveJsonModule": true,
     "removeComments": true,
     "esModuleInterop": true,
@@ -18,18 +18,11 @@
     "lib": [
       "ESNext"
     ],
-    "paths": {
-      "@src": [
-        "./src"
-      ]
-    }
+    "types": [
+      "node",
+    ]
   },
   "include": [
     "src/**/*.ts",
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.build.json"
-    }
   ]
 }

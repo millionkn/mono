@@ -1,5 +1,4 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "targets": {
     "tsc-check": {
       "executor": "nx:run-commands",

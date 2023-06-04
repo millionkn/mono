@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "build-dist": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/devkit",
+        "command": "tsc"
+      }
+    }
+  }
+}

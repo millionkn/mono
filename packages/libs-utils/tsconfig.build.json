@@ -2,11 +2,11 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
+    "rootDir": "src",
     "moduleResolution": "bundler",
+    "composite": true,
     "resolveJsonModule": true,
     "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "alwaysStrict": true,
     "strict": true,
@@ -19,6 +19,10 @@
       "ESNext"
     ],
     "types": [
-    ],
+      "node",
+    ]
   },
+  "include": [
+    "scripts/**/*.ts",
+  ]
 }

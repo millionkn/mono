@@ -1,7 +1,12 @@
-import nxDevkit, { getProjects } from "@nx/devkit";
+import nxDevkit from "@nx/devkit";
 
 const projectGraph = await nxDevkit.createProjectGraphAsync()
-const node = projectGraph.nodes['project-template-server']
-projectGraph.dependencies
-const a = nxDevkit.getDependentPackagesForProject(projectGraph,'project-template-server')
-console.log(projectGraph.externalNodes)
+const cache = new Set<string>()
+async function copyDist(projectName: string): Promise<void> {
+  if (cache.has(projectName)) { return }
+  cache.add(projectName)
+  const dependencies = projectGraph.dependencies[projectName]
+  await Promise.all(dependencies.map((dep) => copyDist(dep.target)))
+
+}
+copyDist('project-template-server')
