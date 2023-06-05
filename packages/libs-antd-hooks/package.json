@@ -16,12 +16,13 @@
   "sideEffects": false,
   "dependencies": {
     "@mono/libs-control-hooks": "workspace:^",
-    "antd": "link:..\\..\\store\\node_modules\\antd",
-    "react": "link:..\\..\\store\\node_modules\\react",
-    "rxjs": "link:..\\..\\store\\node_modules\\rxjs"
+    "antd": "link:..\\devkit\\node_modules\\antd",
+    "react": "link:..\\devkit\\node_modules\\react",
+    "rxjs": "link:..\\devkit\\node_modules\\rxjs"
   },
   "devDependencies": {
-    "@types/react": "link:..\\..\\store\\node_modules\\@types\\react",
+    "@mono/devkit": "workspace:^",
+    "@types/react": "link:..\\devkit\\node_modules\\@types\\react",
     "typescript": "link:..\\..\\node_modules\\typescript"
   }
 }

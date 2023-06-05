@@ -5,6 +5,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "moduleResolution": "bundler",
+    "importHelpers": true,
     "resolveJsonModule": true,
     "removeComments": true,
     "esModuleInterop": true,

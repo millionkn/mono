@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "master",
   "tasksRunnerOptions": {
     "default": {
@@ -13,48 +12,25 @@
       }
     }
   },
+  "namedInputs": {
+    "source": [
+      "{projectRoot}/src/**/*"
+    ],
+    "dist":[
+      "{projectRoot}/dist/**/*"
+    ]
+  },
   "targetDefaults": {
-    "tsc-check": {
-      "inputs": [
-        "{projectRoot}/src/**/*",
-        "{projectRoot}/tsconfig.json"
-      ],
-      "dependsOn": [
-        "^build-dist"
-      ]
-    },
     "build-dist": {
       "inputs": [
-        "{projectRoot}/src/**/*"
+        "source",
+        "^dist"
       ],
       "dependsOn": [
-        "tsc-check",
         "^build-dist"
       ],
       "outputs": [
-        "{projectRoot}/dist"
-      ]
-    },
-    "build-prod": {
-      "inputs": [
-        "{projectRoot}/src/**/*"
-      ],
-      "dependsOn": [
-        "tsc-check",
-        "^build-dist"
-      ],
-      "outputs": [
-        "{projectRoot}/dist"
-      ]
-    },
-    "debug": {
-      "dependsOn": [
-        "^build-dist"
-      ]
-    },
-    "start": {
-      "dependsOn": [
-        "^build-dist"
+        "dist"
       ]
     }
   }

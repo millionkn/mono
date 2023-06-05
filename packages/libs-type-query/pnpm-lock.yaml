@@ -5,9 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@mono/devkit':
+    specifier: workspace:^
+    version: link:../devkit
   '@mono/libs-utils':
     specifier: workspace:^
     version: link:../libs-utils
   typeorm:
-    specifier: link:..\..\store\node_modules\typeorm
-    version: link:../../store/node_modules/typeorm
+    specifier: link:..\devkit\node_modules\typeorm
+    version: link:../devkit/node_modules/typeorm

@@ -6,13 +6,16 @@ settings:
 
 dependencies:
   react:
-    specifier: link:..\..\store\node_modules\react
-    version: link:../../store/node_modules/react
+    specifier: link:..\devkit\node_modules\react
+    version: link:../devkit/node_modules/react
 
 devDependencies:
+  '@mono/devkit':
+    specifier: workspace:^
+    version: link:../devkit
   '@types/react':
-    specifier: link:..\..\store\node_modules\@types\react
-    version: link:../../store/node_modules/@types/react
+    specifier: link:..\devkit\node_modules\@types\react
+    version: link:../devkit/node_modules/@types/react
   typescript:
     specifier: link:..\..\node_modules\typescript
     version: link:../../node_modules/typescript

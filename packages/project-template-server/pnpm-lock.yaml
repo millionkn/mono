@@ -12,31 +12,31 @@ dependencies:
     specifier: workspace:^
     version: link:../libs-utils
   '@trpc/server':
-    specifier: link:..\..\store\node_modules\@trpc\server
-    version: link:../../store/node_modules/@trpc/server
+    specifier: link:..\devkit\node_modules\@trpc\server
+    version: link:../devkit/node_modules/@trpc/server
   dayjs:
-    specifier: link:..\..\store\node_modules\dayjs
-    version: link:../../store/node_modules/dayjs
+    specifier: link:..\devkit\node_modules\dayjs
+    version: link:../devkit/node_modules/dayjs
   fastify:
-    specifier: link:..\..\store\node_modules\fastify
-    version: link:../../store/node_modules/fastify
+    specifier: link:..\devkit\node_modules\fastify
+    version: link:../devkit/node_modules/fastify
   pino-pretty:
     specifier: ^10.0.0
     version: 10.0.0
   rxjs:
-    specifier: link:..\..\store\node_modules\rxjs
-    version: link:../../store/node_modules/rxjs
+    specifier: link:..\devkit\node_modules\rxjs
+    version: link:../devkit/node_modules/rxjs
   typeorm:
-    specifier: link:..\..\store\node_modules\typeorm
-    version: link:../../store/node_modules/typeorm
+    specifier: link:..\devkit\node_modules\typeorm
+    version: link:../devkit/node_modules/typeorm
   zod:
-    specifier: link:..\..\store\node_modules\zod
-    version: link:../../store/node_modules/zod
+    specifier: link:..\devkit\node_modules\zod
+    version: link:../devkit/node_modules/zod
 
 devDependencies:
-  '@types/node':
-    specifier: link:..\..\store\node_modules\@types\node
-    version: link:../../store/node_modules/@types/node
+  '@mono/devkit':
+    specifier: workspace:^
+    version: link:../devkit
 
 packages:
 

@@ -15,7 +15,8 @@
   "license": "ISC",
   "sideEffects": false,
   "dependencies": {
+    "@mono/devkit": "workspace:^",
     "@mono/libs-utils": "workspace:^",
-    "typeorm": "link:..\\..\\store\\node_modules\\typeorm"
+    "typeorm": "link:..\\devkit\\node_modules\\typeorm"
   }
 }

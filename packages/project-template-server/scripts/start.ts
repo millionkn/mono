@@ -1,14 +1,8 @@
-import { argv } from "process"
-import { runScript, resolveProjectDir, envWrapper, isInProjectSrc } from "./tools"
-import kill from 'tree-kill'
-import { debounceTime, filter, fromEvent, map, switchMap } from "rxjs"
-const selfChange = argv[2]
-if (selfChange !== '--ignore' && selfChange !== '--emit') {
-  throw new Error('未设置selfChange:--ignore或--emit')
-}
+import { watchProject } from "@mono/devkit"
+import { debounceTime } from "rxjs"
 
-const projectName = argv[3]
-resolveProjectDir(projectName)
+watchProject('project-template-server')
+
 const watcher = runScript({
   stdio: 'pipe',
   script: `nx watch --projects=${projectName} --includeDependentProjects -- echo "${envWrapper('NX_PROJECT_NAME')}/${envWrapper('NX_FILE_CHANGES')}"`,

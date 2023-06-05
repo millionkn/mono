@@ -18,6 +18,7 @@
     "lib": [
       "ESNext"
     ],
+    "types": [],
     "paths": {
       "@src": [
         "./src"

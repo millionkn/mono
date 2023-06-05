@@ -1,5 +1,4 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "targets": {
     "tsc-check": {
       "executor": "nx:run-commands",
@@ -10,8 +9,12 @@
     },
     "build-dist": {
       "executor": "nx:run-commands",
+      "dependsOn": [
+        "^build-dist"
+      ],
       "options": {
-        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollup.ts libs-control-hooks"
+        "cwd": "./packages/libs-control-hooks",
+        "command": "pnpm exec ts-node-esm --project ./tsconfig.build.json ./scripts/build-dist.ts"
       }
     }
   }

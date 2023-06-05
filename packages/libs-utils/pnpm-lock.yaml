@@ -6,5 +6,10 @@ settings:
 
 dependencies:
   rxjs:
-    specifier: link:..\..\store\node_modules\rxjs
-    version: link:../../store/node_modules/rxjs
+    specifier: link:..\devkit\node_modules\rxjs
+    version: link:../devkit/node_modules/rxjs
+
+devDependencies:
+  '@mono/devkit':
+    specifier: workspace:^
+    version: link:../devkit

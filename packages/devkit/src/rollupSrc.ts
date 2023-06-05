@@ -1,29 +1,33 @@
 import { rollup } from 'rollup'
 import { glob } from "glob"
-import typescript from 'rollup-plugin-typescript2'
+import tsPlugin from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { dirname, relative, resolve } from 'path';
-import { init as lexerInit, parse as lexerParse } from 'es-module-lexer';
+import { dirname, relative, resolve } from 'path/posix';
 import MagicString from 'magic-string';
-import { argv } from 'process';
-import { createTsImportResolver, resolveProjectDir } from './tools';
-import fse from 'fs-extra';
+import { normalizePath } from './tools.js';
+import fse from 'fs-extra'
+import lexer from 'es-module-lexer';
+import { getProjectDir } from './workspace.js';
+import { createTsImportResolver } from './createTsImportResolver.js';
 
-const projectDir = resolveProjectDir(argv[2])
-await lexerInit
-const tsModuleResolver = createTsImportResolver(resolve(projectDir, 'tsconfig.json'))
 
-try {
-  const inputs = await glob(`${projectDir}/src/**/*.ts`, {
+await lexer.init
+
+export async function rollupSrc(
+  projectName: string,
+) {
+  const projectDir = getProjectDir(projectName)
+  const tsModuleResolver = createTsImportResolver(resolve(projectDir, 'tsconfig.json'))
+  const inputs = await glob(`./${projectDir}/src/**/*`, {
     withFileTypes: false,
-    posix: true,
-    absolute: false,
-  })
+    posix: false,
+    absolute: true,
+  }).then((arr)=>arr.map(normalizePath))
   const bundle = await rollup({
     external: (_, importer) => !!importer,
-    input: Object.fromEntries(inputs.map((path) => [relative(`${projectDir}/src`, path.split('.').slice(0, -1).join('.')), `./${path}`])),
+    input: Object.fromEntries(inputs.map((input) => [relative('src', input).replace(/\.ts$/, '').replace(/\.tsx$/, ''), input])),
     plugins: [
-      typescript({
+      tsPlugin({
         clean: true,
         tsconfig: `${projectDir}/tsconfig.json`,
         check: false,
@@ -34,9 +38,9 @@ try {
       {
         name: 'extName',
         transform: async function (code, id) {
-          id = id.replaceAll('\\', '/')
+          id = normalizePath(id)
           const magicString = new MagicString(code)
-          const [imports] = lexerParse(code)
+          const [imports] = lexer.parse(code)
           for (const importSpecifier of imports) {
             const start = importSpecifier.d > -1 ? importSpecifier.s + 1 : importSpecifier.s
             const end = importSpecifier.d > -1 ? importSpecifier.e + -1 : importSpecifier.e
@@ -45,7 +49,6 @@ try {
             if (!resolvedModule) { continue }
             if (resolvedModule.isExternalLibraryImport) { continue }
             const importTarget = relative(dirname(id), resolvedModule.resolvedFileName)
-              .replaceAll('\\', '/')
               .replace(/\.ts$/, `.js`)
               .replace(/\.tsx$/, `.jsx`)
             magicString.update(start, end, importTarget.startsWith('.') ? importTarget : `./${importTarget}`)
@@ -66,8 +69,4 @@ try {
     sourcemap: true,
   })
   await bundle.close()
-} catch (e) {
-  //@ts-ignore
-  console.log(e.message)
-  throw e
 }

@@ -1,17 +1,15 @@
 {
   "targets": {
-    "tsc-check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "./packages/libs-utils"
-      }
-    },
     "build-dist": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm run esm-script ./packages/scripts-dev/src/rollup.ts libs-utils"
+        "cwd": "./packages/libs-utils",
+        "command": "pnpm exec ts-node-esm --project ./tsconfig.build.json ./scripts/build-dist.ts"
       }
+    },
+    "watch-source":{
+      "executor": "nx:run-commands",
+
     }
   }
 }

@@ -7,13 +7,13 @@
     "preinstall": "npx -y only-allow pnpm",
     "start": "nx start",
     "debug": "nx debug",
-    "build": "nx build-prod",
-    "esm-script": "ts-node-esm -T --experimental-specifier-resolution node --project ./packages/scripts-dev/tsconfig.json"
+    "build": "nx build-prod"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^18.16.16",
     "nx": "16.1.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"

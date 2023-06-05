@@ -1,18 +1,33 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "rootDir": "src",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "composite": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "lib": [
       "DOM",
       "DOM.Iterable",
       "ESNext"
     ],
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-    "jsx": "react-jsx",
+    "types": [],
     "paths": {
-      "@src/*": [
-        "./src/*"
-      ],
+      "@src": [
+        "./src"
+      ]
     },
   },
   "include": [
@@ -21,7 +36,7 @@
   ],
   "references": [
     {
-      "path": "./tsconfig.node.json"
+      "path": "./tsconfig.build.json"
     }
   ]
 }

@@ -26,5 +26,8 @@
   ],
   "dependencies": {
     "rxjs": "link:..\\devkit\\node_modules\\rxjs"
+  },
+  "devDependencies": {
+    "@mono/devkit": "workspace:^"
   }
 }

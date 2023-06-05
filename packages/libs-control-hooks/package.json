@@ -19,10 +19,11 @@
   "license": "ISC",
   "sideEffects": false,
   "dependencies": {
-    "react": "link:..\\..\\store\\node_modules\\react"
+    "react": "link:..\\devkit\\node_modules\\react"
   },
   "devDependencies": {
-    "@types/react": "link:..\\..\\store\\node_modules\\@types\\react",
+    "@mono/devkit": "workspace:^",
+    "@types/react": "link:..\\devkit\\node_modules\\@types\\react",
     "typescript": "link:..\\..\\node_modules\\typescript"
   }
 }

@@ -9,19 +9,22 @@ dependencies:
     specifier: workspace:^
     version: link:../libs-control-hooks
   antd:
-    specifier: link:..\..\store\node_modules\antd
-    version: link:../../store/node_modules/antd
+    specifier: link:..\devkit\node_modules\antd
+    version: link:../devkit/node_modules/antd
   react:
-    specifier: link:..\..\store\node_modules\react
-    version: link:../../store/node_modules/react
+    specifier: link:..\devkit\node_modules\react
+    version: link:../devkit/node_modules/react
   rxjs:
-    specifier: link:..\..\store\node_modules\rxjs
-    version: link:../../store/node_modules/rxjs
+    specifier: link:..\devkit\node_modules\rxjs
+    version: link:../devkit/node_modules/rxjs
 
 devDependencies:
+  '@mono/devkit':
+    specifier: workspace:^
+    version: link:../devkit
   '@types/react':
-    specifier: link:..\..\store\node_modules\@types\react
-    version: link:../../store/node_modules/@types/react
+    specifier: link:..\devkit\node_modules\@types\react
+    version: link:../devkit/node_modules/@types/react
   typescript:
     specifier: link:..\..\node_modules\typescript
     version: link:../../node_modules/typescript

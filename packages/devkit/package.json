@@ -9,29 +9,36 @@
   "license": "ISC",
   "dependencies": {
     "@nx/devkit": "^16.3.2",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@trpc/client": "^10.29.1",
+    "@trpc/server": "^10.29.1",
+    "@types/fs-extra": "^11.0.1",
+    "@types/react": "^18.2.8",
+    "@types/react-dom": "^18.2.4",
+    "@types/resolve": "^1.20.2",
+    "antd": "^5.5.2",
+    "dayjs": "^1.11.8",
     "entities": "^4.5.0",
+    "es-module-lexer": "^1.2.1",
+    "fastify": "^4.17.0",
     "fs-extra": "^11.1.1",
     "glob": "^10.2.2",
-    "rxjs": "^7.8.1",
-    "xml-js": "^1.6.11"
-  },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.0.2",
-    "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.16.16",
-    "@types/resolve": "^1.20.2",
-    "es-module-lexer": "^1.2.1",
-    "glob": "^10.2.2",
     "magic-string": "^0.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^3.21.5",
     "rollup-plugin-typescript2": "^0.34.1",
-    "tree-kill": "^1.2.2"
+    "rxjs": "^7.8.1",
+    "tree-kill": "^1.2.2",
+    "typeorm": "^0.3.16",
+    "xml-js": "^1.6.11",
+    "zod": "^3.21.4"
   },
-  "exports":{
-    ".":{
-      "types":"./dist/index.d.ts",
-      "node":"./dist/index.js",
-      "import":"./dist/index.js"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/index.js",
+      "import": "./dist/index.js"
     }
   }
 }
