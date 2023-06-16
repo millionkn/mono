@@ -5,8 +5,8 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { dirname, relative, resolve } from 'path/posix';
 import MagicString from 'magic-string';
 import { normalizePath } from './tools.js';
-import fse from 'fs-extra'
-import lexer from 'es-module-lexer';
+const fse = await import('fs-extra')
+const lexer = await import('es-module-lexer')
 import { getProjectDir, getProjectNamedInputs } from './workspace.js';
 import { createTsImportResolver } from './createTsImportResolver.js';
 
@@ -14,11 +14,12 @@ await lexer.init
 
 export async function buildSource(
   projectName: string,
+  namedInputs: string,
   getOutputDir: (normalizedPath: string) => string,
 ) {
   const projectDir = getProjectDir(projectName)
   const tsModuleResolver = createTsImportResolver(resolve(projectDir, 'tsconfig.json'))
-  const sourceInputs = getProjectNamedInputs(projectName, 'source')
+  const sourceInputs = getProjectNamedInputs(projectName, namedInputs)
   const inputs = await glob(sourceInputs.glob, {
     withFileTypes: false,
     posix: false,

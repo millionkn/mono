@@ -1,7 +1,7 @@
 import nxDevkit from "@nx/devkit";
 import { resolve } from "path";
-import { normalizePath } from "./tools";
-import { readJsonSync } from "fs-extra";
+import { normalizePath } from "./tools.js";
+import fse from "fs-extra";
 import anymatch from "anymatch";
 
 const projectGraph = await nxDevkit.createProjectGraphAsync()
@@ -11,7 +11,7 @@ export const getProjectDir = (projectName: string) => {
   if (!projectNode) {
     throw new Error(`未找到工程:${projectName}`)
   }
-  return normalizePath(resolve(nxDevkit.workspaceRoot, projectNode.data.root))
+  return normalizePath(resolve(nxDevkit.workspaceRoot, 'packages', projectName))
 }
 
 const globCache: Record<string, {
@@ -22,11 +22,17 @@ const globCache: Record<string, {
 export const getProjectNamedInputs = (projectName: string, inputName: string) => {
   const cacheKey = JSON.stringify([projectName, inputName])
   if (globCache[cacheKey]) { return globCache[cacheKey] }
-  const nxJson = readJsonSync(resolve(nxDevkit.workspaceRoot, 'nx.json')).catch(() => null)
+  let nxJson: any = null
+  try {
+    nxJson = fse.readJsonSync(resolve(nxDevkit.workspaceRoot, 'nx.json'))
+  } catch { }
   if (typeof nxJson !== 'object' || nxJson instanceof Array || nxJson === null) {
     throw new Error(`nx.json is invalid`)
   }
-  const projectJson = readJsonSync(resolve(getProjectDir(projectName), 'project.json')).catch(() => null)
+  let projectJson: any = null
+  try {
+    projectJson = fse.readJsonSync(resolve(getProjectDir(projectName), 'project.json'))
+  } catch { }
   if (typeof projectJson !== 'object' || projectJson instanceof Array || projectJson === null) {
     throw new Error(`${projectName}/project.json is invalid`)
   }

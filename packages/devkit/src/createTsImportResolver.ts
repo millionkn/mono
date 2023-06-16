@@ -1,6 +1,6 @@
 import { dirname } from 'path/posix';
 import ts from 'typescript';
-import { normalizePath } from './tools';
+import { normalizePath } from './tools.js';
 
 export function createTsImportResolver(tsConfigPath: string) {
   const tsConfig = ts.readConfigFile(normalizePath(tsConfigPath), ts.sys.readFile);

@@ -5,4 +5,9 @@ import { fileURLToPath } from "url";
 const __dir = normalizePath(fileURLToPath(import.meta.url))
 const srcDir = resolve(__dir, '../src')
 
-await buildSource('libs-utils', (path) => resolve('dist', relative(srcDir, path)))
+try{
+  await buildSource('libs-utils', 'build-target', (path) => resolve('dist', relative(srcDir, path)))
+}catch(e){
+  e instanceof Error && console.error( e.message)
+  throw e
+}

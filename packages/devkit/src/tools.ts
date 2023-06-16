@@ -11,6 +11,7 @@ export const envWrapper = ((): (name: string) => string => {
 
 export const normalizePath = (path: string) => {
   const base = cwd()
-  return relative(base, resolve(base, path)).replaceAll('\\', '/')
+  const out = relative(base, resolve(base, path))
+  return out.length === 0 ? '.' : out.replaceAll('\\', '/')
 }
 
