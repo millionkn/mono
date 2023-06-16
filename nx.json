@@ -13,18 +13,29 @@
     }
   },
   "namedInputs": {
-    "source": [
+    "build-target": [
       "{projectRoot}/src/**/*"
     ],
-    "dist":[
+    "watch-target": [
+      "{projectRoot}/src/**/*"
+    ],
+    "dist": [
       "{projectRoot}/dist/**/*"
     ]
   },
   "targetDefaults": {
+    "tsc-check": {
+      "inputs": [
+        "build-target",
+        "^dist"
+      ],
+      "dependsOn": [
+        "^build-dist"
+      ]
+    },
     "build-dist": {
       "inputs": [
-        "source",
-        "^dist"
+        "build-target"
       ],
       "dependsOn": [
         "^build-dist"

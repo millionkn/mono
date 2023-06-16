@@ -1,3 +1,8 @@
-import { rollupSrc } from "@mono/devkit";
+import { buildSource, normalizePath } from "@mono/devkit";
+import { relative, resolve } from "path/posix";
+import { fileURLToPath } from "url";
 
-await rollupSrc('libs-utils')
+const __dir = normalizePath(fileURLToPath(import.meta.url))
+const srcDir = resolve(__dir, '../src')
+
+await buildSource('libs-utils', (path) => resolve('dist', relative(srcDir, path)))

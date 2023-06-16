@@ -1,7 +1,8 @@
 import nxDevkit from "@nx/devkit";
 import { resolve } from "path";
 import { normalizePath } from "./tools";
-import { readJson, readJsonSync } from "fs-extra";
+import { readJsonSync } from "fs-extra";
+import anymatch from "anymatch";
 
 const projectGraph = await nxDevkit.createProjectGraphAsync()
 
@@ -13,7 +14,10 @@ export const getProjectDir = (projectName: string) => {
   return normalizePath(resolve(nxDevkit.workspaceRoot, projectNode.data.root))
 }
 
-const globCache: Record<string, string[]> = {}
+const globCache: Record<string, {
+  glob: string[],
+  tester: (str: string) => boolean
+}> = {}
 
 export const getProjectNamedInputs = (projectName: string, inputName: string) => {
   const cacheKey = JSON.stringify([projectName, inputName])
@@ -26,14 +30,22 @@ export const getProjectNamedInputs = (projectName: string, inputName: string) =>
   if (typeof projectJson !== 'object' || projectJson instanceof Array || projectJson === null) {
     throw new Error(`${projectName}/project.json is invalid`)
   }
-  const findResult = Object.entries({
+  const findResult = Object.entries<string[]>({
     ...nxJson.namedInputs,
     ...projectJson.namedInputs,
   }).find(([key]) => key === inputName)
-  if (!findResult) { return null }
-  const globArr: string[] = findResult[1] as any
-  if (globArr instanceof Array && globArr.every((v) => typeof v === 'string')) {
-    return globCache[cacheKey] = globArr.map((glob) => glob.replaceAll('{workspaceRoot}', normalizePath(nxDevkit.workspaceRoot)).replaceAll('{projectRoot}', getProjectDir(projectName)))
+  if (!findResult) {
+    throw new Error(`project '${projectName}' should set namedInputs:'${inputName}' `)
   }
-  throw new Error(`project '${projectName}' invalid namedInputs:'${inputName}' `)
+  const rawGlobArr: string[] = findResult[1]
+  if (!(rawGlobArr instanceof Array && rawGlobArr.every((v) => typeof v === 'string'))) {
+    throw new Error(`project '${projectName}' invalid namedInputs:'${inputName}' `)
+  }
+  const globArr = rawGlobArr
+    .map((rawGlob) => rawGlob.replaceAll('{workspaceRoot}', normalizePath(nxDevkit.workspaceRoot)))
+    .map((rawGlob) => rawGlob.replaceAll('{projectRoot}', getProjectDir(projectName)))
+  return globCache[cacheKey] = {
+    glob: globArr,
+    tester: anymatch(globArr)
+  }
 }

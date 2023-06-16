@@ -7,25 +7,30 @@ import MagicString from 'magic-string';
 import { normalizePath } from './tools.js';
 import fse from 'fs-extra'
 import lexer from 'es-module-lexer';
-import { getProjectDir } from './workspace.js';
+import { getProjectDir, getProjectNamedInputs } from './workspace.js';
 import { createTsImportResolver } from './createTsImportResolver.js';
-
 
 await lexer.init
 
-export async function rollupSrc(
+export async function buildSource(
   projectName: string,
+  getOutputDir: (normalizedPath: string) => string,
 ) {
   const projectDir = getProjectDir(projectName)
   const tsModuleResolver = createTsImportResolver(resolve(projectDir, 'tsconfig.json'))
-  const inputs = await glob(`./${projectDir}/src/**/*`, {
+  const sourceInputs = getProjectNamedInputs(projectName, 'source')
+  const inputs = await glob(sourceInputs.glob, {
     withFileTypes: false,
     posix: false,
     absolute: true,
-  }).then((arr)=>arr.map(normalizePath))
+  }).then((arr) => arr.map(normalizePath))
   const bundle = await rollup({
     external: (_, importer) => !!importer,
-    input: Object.fromEntries(inputs.map((input) => [relative('src', input).replace(/\.ts$/, '').replace(/\.tsx$/, ''), input])),
+    input: Object.fromEntries(inputs.map((input) => {
+      const outputDir = dirname(normalizePath(getOutputDir(normalizePath(input))))
+      const fileNameWithOutExt = relative(dirname(input), input).replace(/\.ts$/, '').replace(/\.tsx$/, '')
+      return [resolve(outputDir, fileNameWithOutExt), input]
+    })),
     plugins: [
       tsPlugin({
         clean: true,

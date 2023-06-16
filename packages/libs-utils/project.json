@@ -9,7 +9,10 @@
     },
     "watch-source":{
       "executor": "nx:run-commands",
-
+      "options": {
+        "cwd": "./packages/libs-utils",
+        "command": "pnpm exec ts-node-esm --project ./tsconfig.build.json ./scripts/watch-source.ts"
+      }
     }
   }
 }
